@@ -10,6 +10,7 @@ datasource db {
 
 generator client {
     provider = "prisma-client-js"
+    previewFeatures = ["extendedWhereUnique","fieldReference"]
 }
 
 /// @@allow('create,read', true)
@@ -23,11 +24,6 @@ model User {
     /// @length(8, 16)
     password String
     posts Post[]
-
-    zenstack_guard Boolean @default(true)
-    zenstack_transaction String?
-
-    @@index([zenstack_transaction])
 }
 
 /// @@allow('read', auth() != null && published)
@@ -41,9 +37,4 @@ model Post {
     published Boolean @default(false)
     author User? @relation(fields: [authorId], references: [id])
     authorId String?
-
-    zenstack_guard Boolean @default(true)
-    zenstack_transaction String?
-
-    @@index([zenstack_transaction])
 }
