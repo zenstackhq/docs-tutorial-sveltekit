@@ -35,12 +35,12 @@
 		"tslib": "^2.4.1",
 		"typescript": "^5.0.0",
 		"vite": "^4.3.0",
-		"zenstack": "1.0.1"
+		"zenstack": "1.1.0"
 	},
 	"type": "module",
 	"dependencies": {
 		"@prisma/client": "^4.14.1",
-		"@zenstackhq/runtime": "1.0.1",
+		"@zenstackhq/runtime": "1.1.0",
 		"bcryptjs": "^2.4.3",
 		"jsonwebtoken": "^9.0.0"
 	}
