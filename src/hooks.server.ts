@@ -2,7 +2,7 @@ import { env } from '$env/dynamic/private';
 import { JWT_TOKEN_COOKIE_NAME } from '$lib/auth';
 import { prisma } from '$lib/db';
 import type { Handle } from '@sveltejs/kit';
-import { withPresets } from '@zenstackhq/runtime';
+import { enhance } from '@zenstackhq/runtime';
 import jwt from 'jsonwebtoken';
 
 // extract JWT from cookie, decode user identity and store into event.locals
@@ -25,7 +25,7 @@ const auth = (async ({ event, resolve }) => {
 		}
 	}
 
-	event.locals.db = withPresets(prisma, {
+	event.locals.db = enhance(prisma, {
 		user: event.locals.user ? { id: event.locals.user.id } : undefined
 	});
 
