@@ -1,6 +1,6 @@
 import { createToken, JWT_TOKEN_COOKIE_NAME } from '$lib/auth';
 import { fail, redirect, type Actions } from '@sveltejs/kit';
-import { isPrismaClientKnownRequestError, withPresets } from '@zenstackhq/runtime';
+import { enhance, isPrismaClientKnownRequestError } from '@zenstackhq/runtime';
 import { prisma } from '../../lib/db';
 
 export const actions = {
@@ -14,7 +14,7 @@ export const actions = {
 			return fail(400, { email, password, missing: true });
 		}
 
-		const db = withPresets(prisma);
+		const db = enhance(prisma);
 
 		try {
 			// create the user together with a default space
