@@ -18,9 +18,7 @@ export const actions: Actions = {
 			return fail(400, { missing: true });
 		}
 
-		await locals.db.post.create({
-			data: { title, author: { connect: { id: locals.user?.id } } }
-		});
+		await locals.db.post.create({ data: { title } });
 
 		return { success: true };
 	},
